@@ -90,17 +90,17 @@ func meanSpeed(steps int, height float64, duration time.Duration) float64 {
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// Проверка корректности входных параметров
-	if steps < 0 {
-		return 0, fmt.Errorf("количество шагов не может быть отрицательным")
+	if steps == 0 {
+		return 0, fmt.Errorf("Количество шагов не может быть равно 0")
 	}
-	if weight <= 0 {
-		return 0, fmt.Errorf("вес должен быть положительным")
+	if weight == 0 {
+		return 0, fmt.Errorf("Вес не может быть равен 0")
 	}
-	if height <= 0 {
-		return 0, fmt.Errorf("рост должен быть положительным")
+	if height == 0 {
+		return 0, fmt.Errorf("Рост не может быть равен 0")
 	}
-	if duration < 0 {
-		return 0, fmt.Errorf("продолжительность не может быть отрицательной")
+	if duration == 0 {
+		return 0, fmt.Errorf("продолжительность не может быть равно 0")
 	}
 
 	// Расчитываем среднюю скорость
@@ -117,17 +117,17 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// Проверка входных параметров на корректность
-	if steps < 0 {
-		return 0, fmt.Errorf("количество шагов не может быть отрицательным")
+	if steps == 0 {
+		return 0, fmt.Errorf("Количество шагов не может быть равно 0")
 	}
-	if weight <= 0 {
-		return 0, fmt.Errorf("вес должен быть положительным")
+	if weight == 0 {
+		return 0, fmt.Errorf("Вес не может быть равен 0")
 	}
-	if height <= 0 {
-		return 0, fmt.Errorf("рост должен быть положительным")
+	if height == 0 {
+		return 0, fmt.Errorf("Рост не может быть равен 0")
 	}
-	if duration < 0 {
-		return 0, fmt.Errorf("продолжительность не может быть отрицательной")
+	if duration == 0 {
+		return 0, fmt.Errorf("Продолжительность не может быть равна 0")
 	}
 
 	// Рассчитать среднюю скорость (в км/ч)
@@ -193,11 +193,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 		return "", err
 	}
 
-	result := fmt.Sprintf(`Тип тренировки: %s
-Длительность: %.2f ч.
-Дистанция: %.2f км.
-Скорость: %.2f км/ч
-Сожгли калорий: %.2f`, activity, duration.Hours(), distanceKm, speed, calories)
+	result := fmt.Sprintf("Тип тренировки: %s\nПродолжительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСгорело калорий: %.2f\n", activity, duration.Hours(), distanceKm, speed, calories)
 
 	return result, nil
 }
